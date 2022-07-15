@@ -3,9 +3,11 @@ package com.ll.exam;
 public class ArrayList {
 
     private int size;
+    private int[] data;
 
     public ArrayList() {
         size = 0;
+        data = new int[100];
     }
 
     public int size() {
@@ -13,10 +15,12 @@ public class ArrayList {
     }
 
     public void add(int datum) {
+        data[size] = datum;
+
         size++;
     }
 
     public int get(int index) {
-        return 100;
+        return data[index];
     }
 }
