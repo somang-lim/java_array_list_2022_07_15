@@ -7,7 +7,7 @@ public class ArrayList {
 
     public ArrayList() {
         size = 0;
-        data = new int[100];
+        data = new int[2];
     }
 
     public int size() {
@@ -15,6 +15,8 @@ public class ArrayList {
     }
 
     public void add(int datum) {
+        sizeUpIfFull();
+
         data[size] = datum;
 
         size++;
@@ -29,5 +31,29 @@ public class ArrayList {
             data[i - 1] = data[i];
         }
         size--;
+    }
+
+    public int getArrayLength() {
+        return data.length;
+    }
+
+    private void sizeUpIfFull() {
+        if(isFull()) {
+            sizeUp();
+        }
+    }
+
+    private void sizeUp() {
+        int[] newData = new int[data.length * 2];
+
+        for(int i = 0; i < data.length; i++) {
+            newData[i] = data[i];
+        }
+
+        data = newData;
+    }
+
+    private boolean isFull() {
+        return size == data.length;
     }
 }
