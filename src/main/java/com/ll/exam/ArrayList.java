@@ -23,4 +23,11 @@ public class ArrayList {
     public int get(int index) {
         return data[index];
     }
+
+    public void removeAt(int index) {
+        for(int i = index; i < data.length; i++) {
+            data[i - 1] = data[i];
+        }
+        size--;
+    }
 }
