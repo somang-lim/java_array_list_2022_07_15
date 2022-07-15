@@ -47,6 +47,21 @@ public class AppTest {
 
         assertEquals(3, al.size());
     }
+    
+    @Test
+    void 원하는_위치에_add를_하면_그_위치에_추가된다() {
+        al.add(100);
+        al.add(200);
+        al.add(300);
+        al.addAt(500,2);
+        al.add(400);
+
+        assertEquals(100, al.get(0));
+        assertEquals(200, al.get(1));
+        assertEquals(500, al.get(2));
+        assertEquals(300, al.get(3));
+        assertEquals(400, al.get(4));
+    }
 
     @Test
     void get_1_equals_200() {
@@ -126,6 +141,19 @@ public class AppTest {
         assertTrue(rs.contains("0 : 1000"));
         assertTrue(rs.contains("1 : 200"));
         assertTrue(rs.contains("2 : 30"));
+    }
+
+    @Test
+    void showAllValues_version_2() {
+        al.add(1000);
+        al.add(200);
+        al.add(30);
+        al.addAt(300, 1);
+        al.add(500);
+
+        assertEquals(300, al.get(1));
+        assertEquals(200, al.get(2));
+        assertEquals(5, al.size());
     }
 
 }

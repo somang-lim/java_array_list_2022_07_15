@@ -22,6 +22,28 @@ public class ArrayList {
         size++;
     }
 
+    public void addAt(int datum, int index) {
+        if(size == 0) {
+            add(datum);
+        }
+
+        size++;
+
+
+        if(size < data.length) {
+            add(datum);
+        }
+
+        sizeUpIfFull();
+
+        for(int i = size; i >= index; i--) {
+            data[i + 1] = data[i];
+        }
+
+        data[index] = datum;
+
+    }
+
     public int get(int index) {
         return data[index];
     }
@@ -46,11 +68,13 @@ public class ArrayList {
     private void sizeUp() {
         int[] newData = new int[data.length * 2];
 
+        int beforeLength = data.length;
         for(int i = 0; i < data.length; i++) {
             newData[i] = data[i];
         }
 
         data = newData;
+        System.out.printf("배열의 크기가 증가되었습니다. %d => %d\n", beforeLength, data.length);
     }
 
     private boolean isFull() {
